@@ -33,6 +33,26 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User updateUser(Long id, User user) {
+
+        //Find existing user
+        User existingUser=userRepository.findById(id).orElse(null);
+
+        //Update user details if user is existing
+        if(existingUser!=null){
+            existingUser.setUsername(user.getUsername());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setPassword(user.getPassword());
+
+            //save existing user with new details
+            return userRepository.save(existingUser);
+        }else{
+            return null;
+        }
+
+    }
+
+    @Override
     public Boolean deleteUser(Long id) {
 
         //Check if the user is existed

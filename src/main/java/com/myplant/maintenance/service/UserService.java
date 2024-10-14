@@ -17,6 +17,10 @@ public interface UserService {
     //Get a user by its id
     User findUserById(Long id);
 
+    //Update existing user details
+    User updateUser(Long id,User user);
+
     //Delete an available user
     Boolean deleteUser(Long id);
+
 }
